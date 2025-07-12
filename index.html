@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffeb3b;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .hero-text {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .personal-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 1.5rem;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .history-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .post-body {
+            padding: 1.5rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+
+            .personal-info {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Your Name</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#history">History</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h1>Welcome to My Portfolio</h1>
+                    <p class="hero-text">Passionate professional with expertise in technology and a deep interest in history</p>
+                    
+                    <div class="personal-info">
+                        <div class="info-card">
+                            <h3>Contact</h3>
+                            <p>📧 your.email@example.com</p>
+                            <p>📱 +1 (555) 123-4567</p>
+                            <p>📍 Your City, Country</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Skills</h3>
+                            <p>• Web Development</p>
+                            <p>• Project Management</p>
+                            <p>• Historical Research</p>
+                            <p>• Content Creation</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Interests</h3>
+                            <p>• Ancient History</p>
+                            <p>• Technology</p>
+                            <p>• Photography</p>
+                            <p>• Travel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>My Projects</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Project Title 1</h3>
+                            </div>
+                            <div class="project-body">
+                                <p>Description of your first project. Explain what technologies you used, what problems it solved, and what you learned from it.</p>
+                                <a href="#" class="btn">View Project</a>
+                                <a href="#" class="btn">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Project Title 2</h3>
+                            </div>
+                            <div class="project-body">
+                                <p>Description of your second project. Include details about the development process, challenges faced, and outcomes achieved.</p>
+                                <a href="#" class="btn">View Project</a>
+                                <a href="#" class="btn">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Project Title 3</h3>
+                            </div>
+                            <div class="project-body">
+                                <p>Description of your third project. Highlight the impact it had and any recognition or feedback you received.</p>
+                                <a href="#" class="btn">View Project</a>
+                                <a href="#" class="btn">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Professional Experience</h2>
+                    <div class="experience-timeline">
+                        <div class="experience-item">
+                            <h3>Job Title - Company Name</h3>
+                            <p><strong>2022 - Present</strong></p>
+                            <p>Description of your current or most recent role. Include key responsibilities, achievements, and skills developed.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Previous Job Title - Company Name</h3>
+                            <p><strong>2020 - 2022</strong></p>
+                            <p>Description of your previous role. Highlight projects you worked on and results you achieved.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Earlier Job Title - Company Name</h3>
+                            <p><strong>2018 - 2020</strong></p>
+                            <p>Description of an earlier role. Focus on how it contributed to your professional development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Education</h2>
+                    <div class="education-grid">
+                        <div class="education-card">
+                            <h3>Degree Name</h3>
+                            <p><strong>University Name</strong></p>
+                            <p>Graduation Year</p>
+                            <p>Major/Specialization</p>
+                            <p>GPA or Honors (if applicable)</p>
+                        </div>
+                        <div class="education-card">
+                            <h3>Additional Qualification</h3>
+                            <p><strong>Institution Name</strong></p>
+                            <p>Completion Year</p>
+                            <p>Certification or Course Details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Interest Section -->
+        <section id="history" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>History & Interests</h2>
+                    <p style="text-align: center; margin-bottom: 2rem;">Exploring the past to understand the present</p>
+                    
+                    <div class="history-posts">
+                        <div class="post-card">
+                            <div class="post-header">
+                                <h3>Ancient Civilizations</h3>
+                            </div>
+                            <div class="post-body">
+                                <div class="video-container">
+                                    <span>Video: Rise of Ancient Egypt</span>
+                                </div>
+                                <p>Exploring the fascinating world of ancient civilizations and their lasting impact on modern society. From the pyramids of Egypt to the philosophy of Greece...</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="post-card">
+                            <div class="post-header">
+                                <h3>Medieval History</h3>
+                            </div>
+                            <div class="post-body">
+                                <div class="video-container">
+                                    <span>Video: Medieval Europe</span>
+                                </div>
+                                <p>Diving into the complexities of medieval society, from feudalism to the rise of universities. Understanding how this period shaped modern Europe...</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="post-card">
+                            <div class="post-header">
+                                <h3>Industrial Revolution</h3>
+                            </div>
+                            <div class="post-body">
+                                <div class="video-container">
+                                    <span>Video: Technological Progress</span>
+                                </div>
+                                <p>Examining the Industrial Revolution's impact on society, technology, and human progress. How innovation changed everything we know...</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="post-card">
+                            <div class="post-header">
+                                <h3>Modern History</h3>
+                            </div>
+                            <div class="post-body">
+                                <div class="video-container">
+                                    <span>Video: 20th Century Events</span>
+                                </div>
+                                <p>Analyzing key events of the 20th century and their relevance to contemporary issues. Learning from the past to navigate the future...</p>
+                                <a href="#" class="btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation links
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-content').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
